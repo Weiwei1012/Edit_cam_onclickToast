@@ -1,4 +1,4 @@
-package com.cooking.tablayoutkotlin.food_fragment
+package com.cooking.edit.food_fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cooking.tablayoutkotlin.R
-import com.cooking.tablayoutkotlin.adapters.FooditemsAdapter
-import com.cooking.tablayoutkotlin.model.FooditemsModel
+import com.cooking.edit.R
+import com.cooking.edit.adapters.FooditemsAdapter
+import com.cooking.edit.model.FooditemsModel
 import kotlinx.android.synthetic.main.breakfast_layout.view.*
 
 class Dessertf : Fragment() {

@@ -1,9 +1,9 @@
-package com.cooking.tablayoutkotlin.adapters
+package com.cooking.edit.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.cooking.tablayoutkotlin.food_fragment.*
+import com.cooking.edit.food_fragment.*
 
 
 class Adapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager)  {

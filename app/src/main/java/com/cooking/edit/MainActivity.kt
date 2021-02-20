@@ -1,11 +1,11 @@
-package com.cooking.tablayoutkotlin
+package com.cooking.edit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.cooking.tablayoutkotlin.fragments.CameraFragment
-import com.cooking.tablayoutkotlin.fragments.FavoritesFragment
-import com.cooking.tablayoutkotlin.fragments.HomeFragment
+import com.cooking.edit.fragments.CameraFragment
+import com.cooking.edit.fragments.FavoritesFragment
+import com.cooking.edit.fragments.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

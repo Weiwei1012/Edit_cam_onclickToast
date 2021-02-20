@@ -1,4 +1,4 @@
-package com.cooking.tablayoutkotlin
+package com.cooking.edit
 
 import org.junit.Test
 
