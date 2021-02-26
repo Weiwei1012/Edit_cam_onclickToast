@@ -9,15 +9,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cooking.edit.R
-import com.cooking.edit.adapters.FooditemsAdapter
-import com.cooking.edit.model.FooditemsModel
+import com.cooking.edit.adapters.FoodItemsAdapter
+import com.cooking.edit.models.FoodItemsModel
 import kotlinx.android.synthetic.main.breakfast_layout.view.*
 
 class Breakfastf : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var gridLayoutManager: GridLayoutManager
-    lateinit var foodList: ArrayList<FooditemsModel>
-    lateinit var foodiesAdapters: FooditemsAdapter  //繼承FooditemsAdapter
+    lateinit var foodList: ArrayList<FoodItemsModel>
+    lateinit var foodiesAdapters: FoodItemsAdapter  //繼承FooditemsAdapter
 
     //(第一發生) initialize adapter in onCreate, it's unaffected by views state
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,16 +43,16 @@ class Breakfastf : Fragment() {
         foodList = ArrayList()      //將foodList作為一個arraylist
         foodList = addfood()        //foodList存放圖片及名稱
 
-        foodiesAdapters = FooditemsAdapter(foodList)    //adapter按照位置擺放foodlist裡的所有物品
+        foodiesAdapters = FoodItemsAdapter(requireContext(),foodList)    //adapter按照位置擺放foodlist裡的所有物品
         recyclerView.adapter = foodiesAdapters
     }
 
-    fun addfood(): ArrayList<FooditemsModel>{
-        foodList.add(FooditemsModel(R.drawable.breakfast1 ,  "燕麥優格杯"))
-        foodList.add(FooditemsModel(R.drawable.breakfast2 ,  "草莓蛋吐司"))
-        foodList.add(FooditemsModel(R.drawable.breakfast3 , "煎蛋吐司"))
-        foodList.add(FooditemsModel(R.drawable.breakfast4 , "起司煎蛋"))
-        foodList.add(FooditemsModel(R.drawable.breakfast5 ,  "起士菇菇炒蛋盒子"))
+    private fun addfood(): ArrayList<FoodItemsModel>{
+        foodList.add(FoodItemsModel(R.drawable.breakfast1, "燕麥優格杯"))
+        foodList.add(FoodItemsModel(R.drawable.breakfast2, "草莓蛋吐司"))
+        foodList.add(FoodItemsModel(R.drawable.breakfast3, "煎蛋吐司"))
+        foodList.add(FoodItemsModel(R.drawable.breakfast4, "起司煎蛋"))
+        foodList.add(FoodItemsModel(R.drawable.breakfast5, "起士菇菇炒蛋盒子"))
         return foodList
     }
 }

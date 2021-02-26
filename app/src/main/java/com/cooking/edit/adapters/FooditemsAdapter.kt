@@ -1,16 +1,18 @@
 package com.cooking.edit.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.cooking.edit.R
-import com.cooking.edit.model.FooditemsModel
+import com.cooking.edit.models.FoodItemsModel
 import kotlinx.android.synthetic.main.cardview_layout.view.*
 
-class FooditemsAdapter(var fooditems: ArrayList<FooditemsModel>) :
+class FoodItemsAdapter(var context: Context,private var fooditems: ArrayList<FoodItemsModel>) :
     RecyclerView.Adapter<FoodItemHolder>() {
 
     override fun getItemCount(): Int {
@@ -25,8 +27,13 @@ class FooditemsAdapter(var fooditems: ArrayList<FooditemsModel>) :
     }
 
     override fun onBindViewHolder(holder: FoodItemHolder, position: Int) {
-        holder.icons.setImageResource(fooditems.get(position).iconsChar)
-        holder.title.text = fooditems.get(position).alphaChar
+        holder.icons.setImageResource(fooditems[position].image)
+        holder.title.text = fooditems[position].title
+
+        holder.itemView.setOnClickListener{
+            Toast.makeText(context,fooditems[position].title,Toast.LENGTH_SHORT).show()
+
+        }
     }
 }
 

@@ -9,15 +9,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cooking.edit.R
-import com.cooking.edit.adapters.FooditemsAdapter
-import com.cooking.edit.model.FooditemsModel
+import com.cooking.edit.adapters.FoodItemsAdapter
+import com.cooking.edit.models.FoodItemsModel
 import kotlinx.android.synthetic.main.breakfast_layout.view.*
 
 class Easyf : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var gridLayoutManager: GridLayoutManager
-    lateinit var foodList: ArrayList<FooditemsModel>
-    lateinit var foodiesAdapters: FooditemsAdapter  //繼承FooditemsAdapter
+    lateinit var foodList: ArrayList<FoodItemsModel>
+    lateinit var foodiesAdapters: FoodItemsAdapter  //繼承FooditemsAdapter
 
     //(第一發生) initialize adapter in onCreate, it's unaffected by views state
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ class Easyf : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.easy_layout, container, false)
+        return inflater.inflate(R.layout.easy_layout, container, false)
     }
 
     //(第三發生)initialize recyclerView and layout manager
@@ -44,19 +44,19 @@ class Easyf : Fragment() {
 
         foodList = ArrayList()
         foodList = addfood()
-        foodiesAdapters = FooditemsAdapter(foodList)
+        foodiesAdapters = FoodItemsAdapter(requireContext(),foodList)
         recyclerView.adapter = foodiesAdapters
 
     }
 
-    fun addfood(): ArrayList<FooditemsModel> {
-        foodList.add(FooditemsModel(R.drawable.easy1, alphaChar = "低熱量花椰菜炒飯"))
-        foodList.add(FooditemsModel(R.drawable.easy2, alphaChar = "高蛋白便當"))
-        foodList.add(FooditemsModel(R.drawable.easy3, alphaChar = "雞肉蔬菜健康餐"))
-        foodList.add(FooditemsModel(R.drawable.easy4, alphaChar = "嫩煎香料雞胸-兩人份"))
-        foodList.add(FooditemsModel(R.drawable.easy5, alphaChar = "塔香味噌鹽麴烤雞腿排-兩人份"))
-        foodList.add(FooditemsModel(R.drawable.easy6, alphaChar = "紅糟醬烤雞腿排-兩人份"))
-        foodList.add(FooditemsModel(R.drawable.easy7, alphaChar = "野餐似的小學生午餐-一人份"))
+    private fun addfood(): ArrayList<FoodItemsModel> {
+        foodList.add(FoodItemsModel(R.drawable.easy1, "低熱量花椰菜炒飯"))
+        foodList.add(FoodItemsModel(R.drawable.easy2, "高蛋白便當"))
+        foodList.add(FoodItemsModel(R.drawable.easy3, "雞肉蔬菜健康餐"))
+        foodList.add(FoodItemsModel(R.drawable.easy4, "嫩煎香料雞胸-兩人份"))
+        foodList.add(FoodItemsModel(R.drawable.easy5, "塔香味噌鹽麴烤雞腿排-兩人份"))
+        foodList.add(FoodItemsModel(R.drawable.easy6, "紅糟醬烤雞腿排-兩人份"))
+        foodList.add(FoodItemsModel(R.drawable.easy7, "野餐似的小學生午餐-一人份"))
         return foodList
     }
 }

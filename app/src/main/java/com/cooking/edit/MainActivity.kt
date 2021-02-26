@@ -1,8 +1,13 @@
 package com.cooking.edit
 
+import android.content.ContentValues
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.cooking.edit.adapters.Permissions
 import com.cooking.edit.fragments.CameraFragment
 import com.cooking.edit.fragments.FavoritesFragment
 import com.cooking.edit.fragments.HomeFragment
@@ -23,15 +28,49 @@ class MainActivity : AppCompatActivity() {
 
         setCurrentFragment(homeFragment)
 
-        bottom_navigation.setOnNavigationItemSelectedListener {
-            when (it.itemId){
-                R.id.nav_home -> setCurrentFragment(homeFragment)
-                R.id.nav_camera -> setCurrentFragment(cameraFragment)
-                R.id.nav_favorites -> setCurrentFragment(favoritesFragment)
+        if(checkPermissionArray(Permissions.PERMISSIONS)){
+            bottom_navigation.setOnNavigationItemSelectedListener {
+                when (it.itemId){
+                    R.id.nav_home -> setCurrentFragment(homeFragment)
+                    R.id.nav_camera -> setCurrentFragment(cameraFragment)
+                    R.id.nav_favorites -> setCurrentFragment(favoritesFragment)
+                }
+                true
             }
-            true
+        }else{
+            verifyPermissions(Permissions.PERMISSIONS)
         }
 
+    }
+
+    private fun verifyPermissions(permissions: Array<String>) {
+        Log.d(ContentValues.TAG, "verifyPermissions : verifying permissions.")
+        ActivityCompat.requestPermissions(
+            this@MainActivity, permissions, VERIFY_PERMISSIONS_REQUEST
+        )
+    }
+
+    private fun checkPermissionArray(permissions: Array<String>): Boolean {
+        Log.d(ContentValues.TAG, "checkPermissionsArray: checking permissions array.")
+        for (i in permissions.indices) {
+            val check = permissions[i]
+            if (!checkPermissions(check)) {
+                return false
+            }
+        }
+        return true
+    }
+
+    fun checkPermissions(permission: String): Boolean {
+        Log.d(ContentValues.TAG, "checkPermissions: checking permissions $permission")
+        val permissionRequest = ActivityCompat.checkSelfPermission(this@MainActivity, permission)
+        return if (permissionRequest != PackageManager.PERMISSION_GRANTED) {
+            Log.d(ContentValues.TAG, "checkPermissions: \n Permission wasn't granted for: $permission")
+            false
+        } else {
+            Log.d(ContentValues.TAG, "checkPermissions: \n Permission was granted for: $permission")
+            true
+        }
     }
 
     private fun setCurrentFragment(fragment: Fragment) =
@@ -39,4 +78,8 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.fl_wrapper, fragment)
             commit()
         }
+
+    companion object {
+        private const val VERIFY_PERMISSIONS_REQUEST = 1
+    }
 }

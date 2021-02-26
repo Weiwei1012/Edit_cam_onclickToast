@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Affirmations</string>
+    <string name="app_name">橙嗜食嚥🍊</string>
     <string name="affirmation1">I am strong.</string>
     <string name="affirmation2">I believe in myself.</string>
     <string name="affirmation3">Each day is a new opportunity to grow and be a better version of myself.</string>
@@ -14,4 +14,6 @@
     <string name="easy">便當</string>
     <string name="sidedish">配菜</string>
     <string name="title">title</string>
+    <string name="Open_Camera">開啟相機</string>
+    <string name="show_picture">顯示照片</string>
 </resources>

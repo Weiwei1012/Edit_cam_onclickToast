@@ -1,4 +1,5 @@
-package com.cooking.edit.model
+package com.cooking.edit.models
 
-class FooditemsModel(var iconsChar: Int,var alphaChar: String ) {
-}
+import java.io.Serializable
+
+class FoodItemsModel(var image: Int,var title: String ): Serializable
